@@ -1,5 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120">
-  <style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&amp;display=swap');</style>
-  <rect width="120" height="120" rx="24" fill="#2B2D31"/>
-  <text x="60" y="92" text-anchor="middle" font-family="Fraunces, serif" font-size="110" font-weight="600" fill="#C4572E">&#8217;</text>
+  <rect width="120" height="120" rx="24" fill="#C4572E"/>
+  <g fill="#F5F0E8">
+    <circle cx="60" cy="48" r="26"/>
+    <path d="M86 48 C 86 74 72 92 50 104 L 42 92 C 58 82 66 68 66 48 Z"/>
+  </g>
 </svg>
