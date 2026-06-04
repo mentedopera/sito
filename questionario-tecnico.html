@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Questionario tecnico — Mente d'Opera</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ink:#2B2D31;--ink-soft:#4A4D54;--muted:#6B5E52;--bg:#F5F0E8;--card:#FFFDF9;--line:#E5DCCB;
+    --acc:#C4572E;--acc-soft:#F3DDD2;--acc-dark:#9A4423;--ok:#1D9E75;--warn:#BA7517;--bad:#A32D2D;
+    --display:'Fraunces',serif;--body:'Archivo',sans-serif;}
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.6;padding:40px 16px 80px;-webkit-font-smoothing:antialiased;}
+  .wrap{max-width:760px;margin:0 auto;}
+  h1{font-family:var(--display);font-size:clamp(24px,4vw,32px);font-weight:600;line-height:1.2;}
+  .sub{color:var(--muted);margin-top:10px;max-width:58ch;}
+  .badge{display:inline-block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--acc-dark);background:var(--acc-soft);padding:6px 14px;border-radius:999px;margin-bottom:16px;}
+  section.block{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:30px 30px 18px;margin-top:22px;}
+  .block h2{font-family:var(--display);font-size:19px;font-weight:600;display:flex;align-items:center;gap:12px;}
+  .block h2 .n{width:30px;height:30px;border-radius:8px;background:var(--acc-soft);color:var(--acc-dark);display:inline-flex;align-items:center;justify-content:center;font-size:14px;flex:none;}
+  .block .hint{font-size:13.5px;color:var(--muted);margin:6px 0 4px 42px;}
+  .q{padding:20px 0 18px;border-top:1px solid var(--line);margin-top:18px;}
+  .q:first-of-type{border-top:none;}
+  .q label.qt{display:block;font-weight:600;font-size:15.5px;margin-bottom:12px;}
+  .opts{display:flex;flex-wrap:wrap;gap:8px;}
+  .opt{position:relative;}
+  .opt input{position:absolute;opacity:0;inset:0;cursor:pointer;}
+  .opt span{display:inline-block;padding:9px 16px;border:1px solid var(--line);border-radius:10px;font-size:14px;background:#FBF7EF;cursor:pointer;transition:all .2s;user-select:none;}
+  .opt input:checked + span{background:var(--acc);border-color:var(--acc);color:#fff;}
+  select,textarea,input[type=text],input[type=email],input[type=number],input[type=date]{width:100%;padding:11px 14px;border:1px solid var(--line);border-radius:10px;font-family:var(--body);font-size:15px;background:#FBF7EF;color:var(--ink);}
+  textarea{min-height:84px;resize:vertical;}
+  select:focus,textarea:focus,input:focus{outline:2px solid var(--acc-soft);border-color:var(--acc);}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+  .sysrow{display:grid;grid-template-columns:150px 1fr 150px;gap:10px;align-items:center;margin-top:10px;}
+  .sysrow .sl{font-size:14px;font-weight:600;color:var(--ink-soft);}
+  .sysrow select{padding:9px 10px;font-size:14px;}
+  @media(max-width:640px){.grid2{grid-template-columns:1fr;}.sysrow{grid-template-columns:1fr;gap:6px;}}
+  .submit{margin-top:28px;text-align:center;}
+  button.go{font-family:var(--display);font-size:16px;font-weight:600;background:var(--acc);color:#fff;border:none;border-radius:12px;padding:16px 40px;cursor:pointer;transition:all .25s;}
+  button.go:hover{background:var(--acc-dark);transform:translateY(-1px);}
+  .miss{color:var(--bad);font-size:13.5px;margin-top:10px;display:none;}
+  #grazie{display:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:40px;text-align:center;margin-top:30px;}
+  #grazie h2{font-family:var(--display);font-size:22px;font-weight:600;}
+  #grazie p{color:var(--muted);margin-top:10px;}
+  #send-status{font-size:13px;font-weight:600;margin-top:12px;}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div style="text-align:center;margin-bottom:26px;"><a href="index.html" style="text-decoration:none;font-family:'Fraunces',serif;font-size:22px;font-weight:500;color:var(--ink);">mente d<span style="color:var(--acc);">’</span>opera</a></div>
+<div id="form-view">
+  <span class="badge">Fase tecnica · 10 minuti</span>
+  <h1>Prepariamo il tuo progetto</h1>
+  <p class="sub">Queste informazioni ci permettono di progettare gli interventi e prepararti un preventivo dettagliato, con tutto ciò che serve sia a te che a noi per partire.</p>
+
+  <section class="block">
+    <h2><span class="n">1</span>Riferimenti</h2>
+    <div class="q">
+      <div class="grid2">
+        <input type="text" id="f-azienda" placeholder="Azienda *">
+        <input type="text" id="f-nome" placeholder="Nome e cognome *">
+      </div>
+      <div class="grid2" style="margin-top:10px;">
+        <input type="email" id="f-email" placeholder="Email (la stessa dell'assessment) *">
+        <input type="text" id="f-tel" placeholder="Telefono">
+      </div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2><span class="n">2</span>I tuoi sistemi</h2>
+    <p class="hint">Per ogni sistema: nome del prodotto e se hai accesso amministratore.</p>
+    <div class="q">
+      <div class="sysrow"><span class="sl">Gestionale / ERP</span><input type="text" class="sys" id="s-erp" placeholder="Nome e versione (es. TeamSystem Alyante)"><select id="sa-erp"><option value="">Accesso admin?</option><option>Sì</option><option>No</option><option>Da verificare</option></select></div>
+      <div class="sysrow"><span class="sl">E-commerce</span><input type="text" class="sys" id="s-shop" placeholder="Es. Shopify, WooCommerce, nessuno"><select id="sa-shop"><option value="">Accesso admin?</option><option>Sì</option><option>No</option><option>Da verificare</option></select></div>
+      <div class="sysrow"><span class="sl">CRM</span><input type="text" class="sys" id="s-crm" placeholder="Es. HubSpot, nessuno"><select id="sa-crm"><option value="">Accesso admin?</option><option>Sì</option><option>No</option><option>Da verificare</option></select></div>
+      <div class="sysrow"><span class="sl">Helpdesk / email clienti</span><input type="text" class="sys" id="s-help" placeholder="Es. casella Gmail condivisa, Zendesk"><select id="sa-help"><option value="">Accesso admin?</option><option>Sì</option><option>No</option><option>Da verificare</option></select></div>
+      <div class="sysrow"><span class="sl">Fatturazione</span><input type="text" class="sys" id="s-fatt" placeholder="Es. Fatture in Cloud, modulo del gestionale"><select id="sa-fatt"><option value="">Accesso admin?</option><option>Sì</option><option>No</option><option>Da verificare</option></select></div>
+      <div class="sysrow"><span class="sl">Produzione (MES/WMS)</span><input type="text" class="sys" id="s-prod" placeholder="Es. MES, software magazzino, fogli Excel di reparto"><select id="sa-prod"><option value="">Accesso admin?</option><option>Sì</option><option>No</option><option>Da verificare</option></select></div>
+      <div class="sysrow"><span class="sl">Altro rilevante</span><input type="text" class="sys" id="s-altro" placeholder="Centralino, marketplace, WMS…"><select id="sa-altro"><option value="">Accesso admin?</option><option>Sì</option><option>No</option><option>Da verificare</option></select></div>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2><span class="n">3</span>Cosa vuoi automatizzare</h2>
+    <p class="hint">Seleziona tutto ciò che ti interessa: il preventivo darà priorità e fasi.</p>
+    <div class="q">
+      <p style="font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px;">Ufficio, clienti e amministrazione</p>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="auto"><span>Risposte automatiche alle email clienti</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Chatbot sul sito</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Assistente WhatsApp</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Classificazione e smistamento richieste</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Lettura automatica fatture/documenti</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Inserimento ordini a gestionale</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Generazione preventivi</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Report automatici</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Assistente interno per il team</span></label>
+      </div>
+      <p style="font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.08em;text-transform:uppercase;margin:18px 0 10px;">Produzione, magazzino e operations</p>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" name="auto"><span>Pianificazione e schedulazione produzione</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Controllo qualità (foto, visione, schede)</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Segnalazione guasti e manutenzione</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Magazzino, scorte e riordino fornitori</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Distinte base e documenti tecnici</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Tracciabilità lotti e conformità</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Ordini e solleciti ai fornitori</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Turni, presenze e gestione HR</span></label>
+        <label class="opt"><input type="checkbox" name="auto"><span>Raccolta dati da macchine e reparti</span></label>
+      </div>
+      <textarea id="f-altro-auto" style="margin-top:12px;" placeholder="Altro o dettagli: descrivi liberamente cosa vorresti che facesse l'AI, anche in produzione…"></textarea>
+    </div>
+    <div class="q"><label class="qt">Se dovessi partire da UNA sola cosa, quale?</label>
+      <input type="text" id="f-priorita" placeholder="Es. le email con 'dov'è il mio ordine'">
+    </div>
+  </section>
+
+  <section class="block">
+    <h2><span class="n">4</span>Volumi e regole</h2>
+    <div class="q"><label class="qt">Volumi indicativi</label>
+      <div class="grid2">
+        <div><label class="sl" style="font-size:13px;color:var(--muted);">Email/messaggi clienti al giorno</label><input type="number" min="0" id="v-email" placeholder="0"></div>
+        <div><label class="sl" style="font-size:13px;color:var(--muted);">Ordini al mese</label><input type="number" min="0" id="v-ordini" placeholder="0"></div>
+        <div><label class="sl" style="font-size:13px;color:var(--muted);">Documenti amministrativi al mese</label><input type="number" min="0" id="v-doc" placeholder="0"></div>
+        <div><label class="sl" style="font-size:13px;color:var(--muted);">Persone coinvolte nei processi</label><input type="number" min="0" id="v-persone" placeholder="0"></div>
+      </div>
+    </div>
+    <div class="q"><label class="qt">Regole di business da rispettare assolutamente</label>
+      <textarea id="f-regole" placeholder="Es. i rimborsi sopra 100€ li approva sempre il titolare; ai clienti B2B rispondiamo con listino riservato…"></textarea>
+    </div>
+    <div class="q"><label class="qt">Quando deve essere operativo?</label>
+      <div class="opts" data-req>
+        <label class="opt"><input type="radio" name="scadenza"><span>Il prima possibile</span></label>
+        <label class="opt"><input type="radio" name="scadenza"><span>Entro 1 mese</span></label>
+        <label class="opt"><input type="radio" name="scadenza"><span>Entro 3 mesi</span></label>
+        <label class="opt"><input type="radio" name="scadenza"><span>Flessibile</span></label>
+      </div>
+    </div>
+    <div class="q"><label class="qt">Referente tecnico durante il progetto</label>
+      <div class="opts" data-req>
+        <label class="opt"><input type="radio" name="reftec"><span>IT interno</span></label>
+        <label class="opt"><input type="radio" name="reftec"><span>Consulente esterno</span></label>
+        <label class="opt"><input type="radio" name="reftec"><span>Il titolare / io</span></label>
+      </div>
+    </div>
+  </section>
+
+  <div class="submit">
+    <button type="button" class="go" onclick="inviaTecnico()">Invia il questionario tecnico →</button>
+    <p class="miss" id="miss">Compila azienda, nome, email e le domande su scadenza e referente.</p>
+    <p id="send-status"></p>
+  </div>
+</div>
+
+<div id="grazie">
+  <h2>Ricevuto, grazie!</h2>
+  <p>Stiamo preparando il tuo preventivo dettagliato: lo riceverai via email con interventi, tempi e costi. Per qualsiasi cosa nel frattempo, rispondi pure alla nostra ultima email.</p>
+</div>
+</div>
+
+<script>
+const ENDPOINT = 'https://mentedopera-proxy.onrender.com/assessment/submit';
+const API_KEY = 'mdo_73764c9a452799c089774bbd5b2eff5b';
+
+function v(id){ return (document.getElementById(id)||{}).value || ''; }
+
+async function inviaTecnico(){
+  const miss = document.getElementById('miss');
+  const okBase = v('f-azienda') && v('f-nome') && v('f-email');
+  const okReq = [...document.querySelectorAll('[data-req]')].every(g => g.querySelector('input:checked'));
+  if(!okBase || !okReq){ miss.style.display='block'; window.scrollTo({top:0,behavior:'smooth'}); return; }
+  miss.style.display='none';
+
+  const sistemi = {};
+  ['erp','shop','crm','help','fatt','prod','altro'].forEach(k=>{
+    if(v('s-'+k)) sistemi[k] = { nome: v('s-'+k), accesso_admin: v('sa-'+k) || 'n.d.' };
+  });
+  const payload = {
+    fase: 3,
+    azienda: v('f-azienda'), nome: v('f-nome'), email: v('f-email'), telefono: v('f-tel'),
+    sistemi,
+    automazioni: [...document.querySelectorAll('input[name=auto]:checked')].map(e=>e.nextElementSibling.textContent),
+    automazioni_altro: v('f-altro-auto'),
+    priorita: v('f-priorita'),
+    volumi: { email_giorno: v('v-email'), ordini_mese: v('v-ordini'), documenti_mese: v('v-doc'), persone: v('v-persone') },
+    regole_business: v('f-regole'),
+    scadenza: (document.querySelector('input[name=scadenza]:checked')||{}).nextElementSibling?.textContent || '',
+    referente_tecnico: (document.querySelector('input[name=reftec]:checked')||{}).nextElementSibling?.textContent || ''
+  };
+
+  const st = document.getElementById('send-status');
+  st.textContent = 'Invio in corso…'; st.style.color = 'var(--muted)';
+  try{
+    const res = await fetch(ENDPOINT, { method:'POST',
+      headers:{'Content-Type':'application/json','x-assessment-key':API_KEY},
+      body: JSON.stringify(payload) });
+    if(!res.ok) throw new Error(res.status);
+    document.getElementById('form-view').style.display='none';
+    document.getElementById('grazie').style.display='block';
+    window.scrollTo({top:0});
+  }catch(e){
+    st.textContent = 'Invio non riuscito: riprova tra un minuto o scrivici via email.';
+    st.style.color = 'var(--bad)';
+  }
+}
+</script>
+</body>
+</html>

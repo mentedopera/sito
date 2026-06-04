@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mente d'Opera — L'AI che libera le tue persone dal lavoro ripetitivo</title>
+<link rel="icon" type="image/svg+xml" href="logo/marchio-apostrofo.svg">
+<meta name="description" content="Consulenza AI per le PMI italiane: automatizziamo i processi ripetitivi così il tuo team torna a fare il lavoro che conta. Assessment gratuito in 5 minuti.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#2B2D31;
+    --ink-soft:#4A4D54;
+    --terra:#C4572E;
+    --terra-soft:#E0703F;
+    --crema:#F5F0E8;
+    --crema-deep:#ECE4D6;
+    --blu:#27418F;
+    --sabbia:#6B5E52;
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Archivo',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--crema);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+  ::selection{background:var(--terra);color:#fff;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 6vw;}
+  .label{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--sabbia);font-weight:600;}
+  .label:before{content:"’ ";color:var(--terra);font-family:var(--serif);font-weight:600;}
+
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(245,240,232,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(43,45,49,.1);}
+  .nav-inner{max-width:1160px;margin:0 auto;padding:16px 6vw;display:flex;align-items:center;justify-content:space-between;}
+  .logo{text-decoration:none;font-family:var(--serif);font-size:21px;font-weight:500;color:var(--ink);}
+  .logo i{font-style:normal;color:var(--terra);}
+  .nav-links{display:flex;gap:34px;align-items:center;}
+  .nav-links a{text-decoration:none;color:var(--ink);font-size:13.5px;font-weight:500;position:relative;}
+  .nav-links a:not(.btn):after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--terra);transition:width .3s;}
+  .nav-links a:not(.btn):hover:after{width:100%;}
+  .btn{display:inline-block;padding:13px 28px;background:var(--ink);color:var(--crema);text-decoration:none;font-size:13.5px;font-weight:600;border-radius:4px;border:1px solid var(--ink);transition:all .3s;}
+  .btn:hover{background:var(--terra);border-color:var(--terra);}
+  .btn.ghost{background:transparent;color:var(--ink);}
+  .btn.ghost:hover{background:var(--ink);color:var(--crema);}
+  .btn.terra{background:var(--terra);border-color:var(--terra);}
+  .btn.terra:hover{background:var(--terra-soft);border-color:var(--terra-soft);}
+  .nav-links .btn{padding:9px 20px;}
+  @media(max-width:780px){.nav-links a:not(.btn){display:none;}}
+
+  .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1);}
+  .reveal.in{opacity:1;transform:none;}
+
+  /* HERO */
+  header{padding:180px 0 100px;position:relative;overflow:hidden;}
+  .hero-apo{position:absolute;right:-40px;top:60px;font-family:var(--serif);font-weight:600;font-size:540px;line-height:1;color:var(--terra);opacity:.08;pointer-events:none;user-select:none;}
+  h1{font-family:var(--serif);font-weight:500;font-size:clamp(42px,6vw,76px);line-height:1.08;letter-spacing:-.01em;max-width:15ch;position:relative;}
+  h1 em{font-style:italic;color:var(--terra);}
+  .hero-sub{max-width:540px;margin-top:30px;font-size:17.5px;color:var(--ink-soft);position:relative;}
+  .hero-cta{margin-top:42px;display:flex;gap:16px;flex-wrap:wrap;position:relative;}
+  .hero-foot{margin-top:84px;display:flex;gap:6vw;flex-wrap:wrap;position:relative;}
+  .hero-foot div{max-width:230px;}
+  .hero-foot strong{font-family:var(--serif);font-size:32px;font-weight:500;display:block;line-height:1.2;}
+  .hero-foot strong i{font-style:normal;color:var(--terra);}
+  .hero-foot span{font-size:13.5px;color:var(--sabbia);}
+
+  /* MANIFESTO */
+  .manifesto{background:var(--ink);color:var(--crema);padding:110px 0;position:relative;overflow:hidden;}
+  .manifesto .label{color:var(--terra-soft);}
+  .manifesto .label:before{color:var(--terra-soft);}
+  .man-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:start;}
+  .man-grid p.big{font-family:var(--serif);font-size:clamp(28px,3.6vw,44px);line-height:1.3;font-weight:400;margin-top:24px;}
+  .man-grid p.big em{font-style:italic;color:var(--terra-soft);}
+  .man-side{display:flex;flex-direction:column;gap:18px;padding-top:58px;font-size:15px;color:#C9C4BA;}
+  @media(max-width:860px){.man-grid{grid-template-columns:1fr;}.man-side{padding-top:0;}}
+
+  /* SERVIZI */
+  .servizi{padding:120px 0;}
+  .sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:60px;flex-wrap:wrap;}
+  h2{font-family:var(--serif);font-weight:500;font-size:clamp(32px,4.2vw,52px);line-height:1.12;margin-top:16px;}
+  .serv-item{display:grid;grid-template-columns:80px 1.1fr 1.6fr;gap:30px;padding:42px 0;border-top:1px solid rgba(43,45,49,.16);align-items:start;transition:background .3s;}
+  .serv-item:last-child{border-bottom:1px solid rgba(43,45,49,.16);}
+  .serv-item:hover{background:var(--crema-deep);}
+  .serv-num{font-family:var(--serif);font-style:italic;font-size:21px;color:var(--terra);padding-top:4px;}
+  .serv-item h3{font-family:var(--serif);font-size:29px;font-weight:500;line-height:1.15;}
+  .serv-item p{color:var(--ink-soft);font-size:15px;}
+  .serv-item ul{list-style:none;margin-top:14px;}
+  .serv-item li{font-size:13.5px;color:var(--ink-soft);padding:7px 0;border-top:1px dashed rgba(43,45,49,.18);}
+  .serv-item li:before{content:"’";color:var(--terra);font-family:var(--serif);font-weight:600;margin-right:10px;}
+  @media(max-width:860px){.serv-item{grid-template-columns:1fr;gap:14px;}}
+
+  /* CASI D'USO */
+  .casi{padding:120px 0;}
+  .casi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:56px;}
+  .caso{background:#FFFDF9;border:1px solid #E5DCCB;border-radius:14px;padding:30px 28px;transition:transform .3s,border-color .3s;}
+  .caso:hover{transform:translateY(-3px);border-color:var(--terra);}
+  .caso h3{font-family:var(--serif);font-size:24px;font-weight:500;}
+  .caso h3 em{font-style:italic;color:var(--terra);}
+  .caso .sub{font-size:12.5px;color:var(--sabbia);margin:2px 0 16px;}
+  .caso p.voce{font-size:13.5px;color:var(--ink-soft);padding:8px 0;border-top:1px dashed rgba(43,45,49,.16);margin:0;}
+  .caso p.voce:before{content:"’ ";color:var(--terra);font-family:var(--serif);font-weight:600;}
+  .casi-cta{text-align:center;margin-top:44px;}
+  @media(max-width:920px){.casi-grid{grid-template-columns:1fr;}}
+
+  /* METODO */
+  .metodo{background:var(--crema-deep);padding:120px 0;}
+  .metodo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(43,45,49,.16);border:1px solid rgba(43,45,49,.16);margin-top:60px;}
+  .fase{background:var(--crema-deep);padding:42px 34px;position:relative;transition:background .3s;}
+  .fase:hover{background:var(--crema);}
+  .fase h3{font-family:var(--serif);font-size:27px;font-weight:500;margin:16px 0 14px;}
+  .fase p{font-size:14.5px;color:var(--ink-soft);}
+  .fase .fnum{position:absolute;top:26px;right:28px;font-family:var(--serif);font-style:italic;font-size:44px;color:rgba(196,87,46,.35);line-height:1;}
+  @media(max-width:860px){.metodo-grid{grid-template-columns:1fr;}}
+
+  /* ASSESSMENT BAND */
+  .band{background:var(--terra);color:#fff;padding:90px 0;text-align:center;position:relative;overflow:hidden;}
+  .band .apo{position:absolute;left:4vw;top:-60px;font-family:var(--serif);font-weight:600;font-size:300px;line-height:1;color:#fff;opacity:.1;user-select:none;}
+  .band h2{color:#fff;max-width:22ch;margin:0 auto;}
+  .band p{max-width:520px;margin:20px auto 0;font-size:16px;opacity:.95;}
+  .band .btn{background:#fff;color:var(--terra);border-color:#fff;margin-top:36px;font-size:15px;padding:16px 36px;}
+  .band .btn:hover{background:var(--ink);color:var(--crema);border-color:var(--ink);}
+
+  /* RISULTATI */
+  .risultati{padding:120px 0;}
+  .ris-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;margin-top:56px;}
+  .ris-grid strong{font-family:var(--serif);font-size:clamp(46px,5vw,64px);font-weight:500;display:block;line-height:1;}
+  .ris-grid strong i{font-style:italic;color:var(--terra);font-size:.6em;}
+  .ris-grid span{display:block;margin-top:14px;font-size:14px;color:var(--sabbia);max-width:24ch;}
+  .ris-note{margin-top:66px;padding:34px 40px;border-left:3px solid var(--terra);background:var(--crema-deep);max-width:740px;}
+  .ris-note p{font-family:var(--serif);font-size:21px;font-style:italic;line-height:1.5;}
+  .ris-note span{display:block;margin-top:14px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sabbia);font-weight:600;font-family:var(--sans);font-style:normal;}
+  @media(max-width:860px){.ris-grid{grid-template-columns:1fr;gap:40px;}}
+
+  /* CONTATTI */
+  .contatti{background:var(--ink);color:var(--crema);padding:130px 0 0;}
+  .contatti .label{color:var(--terra-soft);}
+  .contatti .label:before{color:var(--terra-soft);}
+  .cont-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:80px;align-items:start;padding-bottom:100px;}
+  .contatti .lead{color:#C9C4BA;max-width:480px;margin-top:24px;font-size:16px;}
+  .cont-info{padding-top:48px;display:flex;flex-direction:column;gap:26px;}
+  .cont-info div{border-top:1px solid rgba(245,240,232,.18);padding-top:18px;}
+  .cont-info .label{display:block;margin-bottom:6px;}
+  .cont-info a{color:var(--crema);text-decoration:none;font-family:var(--serif);font-size:23px;}
+  .cont-info a:hover{color:var(--terra-soft);}
+  .contatti .btn{background:var(--terra);border-color:var(--terra);margin-top:38px;}
+  .contatti .btn:hover{background:var(--terra-soft);border-color:var(--terra-soft);}
+  @media(max-width:860px){.cont-grid{grid-template-columns:1fr;gap:40px;}}
+
+  footer{background:var(--ink);color:#9A958B;padding:0 0 48px;}
+  .foot-inner{border-top:1px solid rgba(245,240,232,.14);padding-top:34px;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:12.5px;}
+  footer .logo{font-size:17px;color:var(--crema);}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a class="logo" href="#">mente d<i>’</i>opera</a>
+    <div class="nav-links">
+      <a href="#servizi">Servizi</a>
+      <a href="#casi">Casi d’uso</a>
+      <a href="#metodo">Metodo</a>
+      <a href="#risultati">Risultati</a>
+      <a href="#contatti">Contatti</a>
+      <a class="btn terra" href="assessment.html">Assessment gratuito</a>
+    </div>
+  </div>
+</nav>
+
+<header>
+  <span class="hero-apo">’</span>
+  <div class="wrap">
+    <p class="label reveal">Consulenza AI per le PMI italiane</p>
+    <h1 class="reveal" style="transition-delay:.1s;margin-top:24px;">Libera la <em>mente d’opera</em> della tua impresa.</h1>
+    <p class="hero-sub reveal" style="transition-delay:.2s;">L’AI fa il lavoro ripetitivo. Le tue persone fanno quello che vale. Automatizziamo i processi che assorbono tempo — dall’amministrazione alla produzione — e restituiamo quel tempo a chi fa crescere l’azienda.</p>
+    <div class="hero-cta reveal" style="transition-delay:.3s;">
+      <a class="btn terra" href="assessment.html">Scopri il tuo potenziale in 5 minuti</a>
+      <a class="btn ghost" href="#servizi">Cosa facciamo</a>
+    </div>
+    <div class="hero-foot reveal" style="transition-delay:.45s;">
+      <div><strong>−40<i>%</i></strong><span>di tempo sui processi amministrativi automatizzati</span></div>
+      <div><strong>8 <i>settimane</i></strong><span>dal primo incontro alla prima automazione in produzione</span></div>
+      <div><strong>0 <i>sostituzioni</i></strong><span>le persone restano: cambiano lavoro, in meglio</span></div>
+    </div>
+  </div>
+</header>
+
+<section class="manifesto">
+  <div class="wrap man-grid">
+    <div class="reveal">
+      <p class="label">Perché Mente d’Opera</p>
+      <p class="big">Non sostituiamo le persone. <em>Le promuoviamo.</em></p>
+    </div>
+    <div class="man-side reveal" style="transition-delay:.15s;">
+      <p>Nelle imprese italiane c’è troppa intelligenza sprecata in lavoro ripetitivo: copia-incolla, email standard, inserimento dati, documenti da ribattere. Dentro ogni manodopera c’è una mente d’opera che aspetta di essere liberata.</p>
+      <p>Noi mettiamo l’intelligenza artificiale sui processi che rubano tempo, così le tue persone tornano a fare ciò che nessuna macchina sa fare: seguire i clienti, curare la qualità, far crescere l’azienda.</p>
+    </div>
+  </div>
+</section>
+
+<section class="servizi" id="servizi">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div>
+        <p class="label">I servizi</p>
+        <h2>Cosa facciamo</h2>
+      </div>
+      <p style="max-width:380px;color:var(--ink-soft);font-size:15px;">Quattro aree di intervento, un solo criterio: il ritorno misurabile per la tua impresa.</p>
+    </div>
+
+    <div class="serv-item reveal">
+      <div class="serv-num">01</div>
+      <h3>Automazione dei processi</h3>
+      <div>
+        <p>Individuiamo i processi che assorbono più tempo — in ufficio, in magazzino, in produzione — e li affidiamo all’AI, dentro i sistemi che già usi.</p>
+        <ul>
+          <li>Gestione automatica di email, ordini e documenti</li>
+          <li>Integrazione con gestionale, e-commerce e CRM</li>
+          <li>Flussi di produzione, scorte e fornitori</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="serv-item reveal">
+      <div class="serv-num">02</div>
+      <h3>AI agent &amp; assistenti</h3>
+      <div>
+        <p>Agenti intelligenti che rispondono ai clienti, qualificano richieste e supportano il tuo team — 24 ore su 24, con il tuo tono e le tue regole, sotto supervisione umana.</p>
+        <ul>
+          <li>Assistenza clienti su email, chat e WhatsApp</li>
+          <li>Agenti interni per vendite e back office</li>
+          <li>Escalation alle persone sui casi che contano</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="serv-item reveal">
+      <div class="serv-num">03</div>
+      <h3>Soluzioni su misura</h3>
+      <div>
+        <p>Quando il software a scaffale non basta, progettiamo strumenti dedicati costruiti sui tuoi processi reali: dall’app per i tecnici in campo alla dashboard di direzione.</p>
+        <ul>
+          <li>Analisi e progettazione sui processi reali</li>
+          <li>Sviluppo, collaudo e messa in produzione</li>
+          <li>Manutenzione ed evoluzione continua</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="serv-item reveal">
+      <div class="serv-num">04</div>
+      <h3>Advisory &amp; formazione</h3>
+      <div>
+        <p>Affianchiamo la direzione nella strategia AI e formiamo le persone, perché la mente d’opera resti in azienda anche dopo di noi.</p>
+        <ul>
+          <li>Roadmap AI e priorità di investimento</li>
+          <li>Formazione operativa per i team</li>
+          <li>Governance, sicurezza e conformità</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="casi" id="casi">
+  <div class="wrap">
+    <p class="label reveal">Casi d’uso</p>
+    <h2 class="reveal">Dove l’AI rende, in concreto</h2>
+    <p class="reveal" style="max-width:560px;margin-top:18px;color:var(--ink-soft);font-size:16px;">Queste sono alcune delle attività che abbiamo già realizzato. Tu cosa vorresti automatizzare? Raccontacelo: <em style="font-family:var(--serif);color:var(--terra);">non ci sono limiti.</em></p>
+    <div class="casi-grid">
+      <div class="caso reveal">
+        <h3>Per chi <em>produce</em></h3>
+        <p class="sub">Manifattura, impiantistica, officine</p>
+        <p class="voce">DDT e fatture fornitori letti dall’AI e caricati a gestionale, senza ribattitura</p>
+        <p class="voce">Piano di produzione proposto ogni mattina da ordini, scorte e capacità</p>
+        <p class="voce">Il reparto segnala un guasto su WhatsApp: il ticket di manutenzione si apre da solo</p>
+        <p class="voce">Scorte sotto il minimo: l’ordine al fornitore è già pronto da approvare</p>
+        <p class="voce">Controllo qualità: dalla foto del pezzo alla scheda di non conformità compilata</p>
+        <p class="voce">Tecnici in campo: rapportino con ore e ricambi che arriva dritto in fatturazione</p>
+      </div>
+      <div class="caso reveal" style="transition-delay:.12s;">
+        <h3>Per chi <em>vende</em></h3>
+        <p class="sub">Commercio, e-commerce, distribuzione</p>
+        <p class="voce">“Dov’è il mio ordine?” gestito 24/7 su email e WhatsApp, con il tracking vero del corriere</p>
+        <p class="voce">Resi e rimborsi istruiti in automatico, alle persone solo i casi delicati</p>
+        <p class="voce">Ordini dai marketplace copiati a gestionale mentre il team dorme</p>
+        <p class="voce">Preventivi e carrelli abbandonati ripresi con follow-up puntuali</p>
+        <p class="voce">Listini e schede prodotto aggiornati su tutti i canali in un colpo solo</p>
+        <p class="voce">Solleciti di pagamento garbati e puntuali, senza imbarazzo</p>
+      </div>
+      <div class="caso reveal" style="transition-delay:.24s;">
+        <h3>Per chi fa <em>servizi</em></h3>
+        <p class="sub">Studi, agenzie, servizi alle imprese</p>
+        <p class="voce">Preventivi preparati dall’AI su listini e storico, pronti da rivedere e firmare</p>
+        <p class="voce">Ogni richiesta in arrivo classificata e smistata alla persona giusta</p>
+        <p class="voce">Raccolta documenti dai clienti con promemoria automatici</p>
+        <p class="voce">Verbali di riunione trasformati in attività assegnate</p>
+        <p class="voce">Report periodici per i clienti generati e impaginati da soli</p>
+        <p class="voce">La conoscenza dello studio interrogabile dal team, come un collega esperto</p>
+      </div>
+    </div>
+    <div class="casi-cta reveal">
+      <a class="btn ghost" href="#contatti">Dicci cosa vorresti fare tu →</a>
+    </div>
+  </div>
+</section>
+
+<section class="metodo" id="metodo">
+  <div class="wrap">
+    <p class="label reveal">Il metodo</p>
+    <h2 class="reveal">Tre fasi, un risultato misurabile</h2>
+    <div class="metodo-grid">
+      <div class="fase reveal">
+        <span class="fnum">I</span>
+        <p class="label">Settimane 1–2</p>
+        <h3>Analisi</h3>
+        <p>Mappiamo i tuoi processi sul campo, quantifichiamo il tempo assorbito dalle attività ripetitive e individuiamo gli interventi con il ritorno più alto.</p>
+      </div>
+      <div class="fase reveal" style="transition-delay:.12s;">
+        <span class="fnum">II</span>
+        <p class="label">Settimane 3–8</p>
+        <h3>Progetto</h3>
+        <p>Costruiamo la soluzione, la collaudiamo con il tuo team e la portiamo in produzione senza fermare l’operatività. Le persone sono coinvolte dal primo giorno.</p>
+      </div>
+      <div class="fase reveal" style="transition-delay:.24s;">
+        <span class="fnum">III</span>
+        <p class="label">In continuo</p>
+        <h3>Misura</h3>
+        <p>Monitoriamo i risultati con indicatori concordati: ore liberate, errori evitati, margine recuperato. Si prosegue solo se i numeri lo giustificano.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <span class="apo">’</span>
+  <div class="wrap reveal">
+    <h2>Quanta mente d’opera è nascosta nella tua azienda?</h2>
+    <p>Rispondi a venti domande sui tuoi processi: ottieni subito il potenziale di automazione, le aree dove intervenire per prime e una stima del risparmio.</p>
+    <a class="btn" href="assessment.html">Fai l’assessment gratuito →</a>
+  </div>
+</section>
+
+<section class="risultati" id="risultati">
+  <div class="wrap">
+    <p class="label reveal">I risultati</p>
+    <h2 class="reveal">Numeri, non promesse</h2>
+    <div class="ris-grid">
+      <div class="reveal"><strong>1.200 <i>h/anno</i></strong><span>di lavoro ripetitivo liberato in media per cliente</span></div>
+      <div class="reveal" style="transition-delay:.12s;"><strong>&lt; 6 <i>mesi</i></strong><span>tempo medio di rientro dell’investimento</span></div>
+      <div class="reveal" style="transition-delay:.24s;"><strong>92<i>%</i></strong><span>delle richieste clienti gestite dall’AI, con escalation umana sui casi delicati</span></div>
+    </div>
+    <div class="ris-note reveal">
+      <p>“Le stesse persone, il doppio del valore. Chi prima inseriva ordini tutto il giorno oggi segue i clienti importanti: l’AI fa il resto.”</p>
+      <span>Titolare · PMI manifatturiera, Lombardia</span>
+    </div>
+  </div>
+</section>
+
+<section class="contatti" id="contatti">
+  <div class="wrap cont-grid">
+    <div class="reveal">
+      <p class="label">Contatti</p>
+      <h2>Iniziamo da un’ora di analisi. Gratuita.</h2>
+      <p class="lead">Raccontaci come lavora la tua azienda: ti restituiamo una valutazione onesta di dove l’AI può rendere — e dove no.</p>
+      <a class="btn" href="mailto:info@mentedopera.it">Prenota l’incontro</a>
+    </div>
+    <div class="cont-info reveal" style="transition-delay:.15s;">
+      <div><span class="label">Email</span><a href="mailto:info@mentedopera.it">info@mentedopera.it</a></div>
+      <div><span class="label">Telefono</span><a href="tel:+390200000000">+39 02 0000 0000</a></div>
+      <div><span class="label">Studio</span><a href="#">Milano · su appuntamento</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <span class="logo">mente d<i style="font-style:normal;color:var(--terra-soft);">’</i>opera</span>
+    <span>Mente d’Opera S.r.l. · P.IVA 00000000000 · Milano</span>
+    <span><a href="privacy.html" style="color:inherit;">Privacy</a> · <a href="cookie.html" style="color:inherit;">Cookie</a> · © 2026</span>
+  </div>
+</footer>
+
+<script>
+  const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}})},{threshold:.15});
+  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

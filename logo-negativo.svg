@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="480" height="200" viewBox="0 0 480 200">
+  <style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Archivo:wght@500&amp;display=swap');</style>
+  <rect width="480" height="200" fill="#2B2D31"/>
+  <text x="240" y="62" text-anchor="middle" font-family="Fraunces, serif" font-size="56" font-weight="600" fill="#E0703F">&#8217;</text>
+  <text x="240" y="128" text-anchor="middle" font-family="Fraunces, serif" font-size="50" font-weight="500" letter-spacing="1" fill="#F5F0E8">mente d<tspan fill="#E0703F">&#8217;</tspan>opera</text>
+  <text x="240" y="166" text-anchor="middle" font-family="Archivo, sans-serif" font-size="14" letter-spacing="7" fill="#B8AC9C">L'AI CHE LIBERA LE TUE PERSONE</text>
+</svg>
