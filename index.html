@@ -81,7 +81,13 @@
   .mobile-menu.aperto{display:block;}
   .mobile-menu a{display:block;padding:16px 6vw;text-decoration:none;color:var(--ink);font-family:var(--serif);font-size:19px;border-top:1px solid rgba(43,45,49,.08);}
   .mobile-menu a:before{content:"’ ";color:var(--terra);font-weight:600;}
-  @media(max-width:780px){.nav-links a:not(.btn){display:none;}.burger{display:block;}}
+  @media(max-width:780px){
+    .nav-links a:not(.btn){display:none;}
+    .burger{display:block;padding:8px 12px 8px 0;}
+    .nav-inner{position:relative;}
+    .nav-inner .logo{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:17px;white-space:nowrap;}
+    .nav-links .btn{padding:8px 12px;font-size:12px;white-space:nowrap;}
+  }
 
   .reveal{opacity:0;transform:translateY(26px);transition:opacity .9s cubic-bezier(.2,.6,.2,1),transform .9s cubic-bezier(.2,.6,.2,1);}
   .reveal.in{opacity:1;transform:none;}
@@ -207,6 +213,9 @@
 
 <nav>
   <div class="nav-inner">
+    <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
     <a class="logo" href="#">mente d<i>’</i>opera</a>
     <div class="nav-links">
       <a href="#servizi">Servizi</a>
@@ -216,9 +225,6 @@
       <a href="guide.html" style="position:static;">Guide</a>
       <a href="#contatti">Contatti</a>
       <a class="btn terra" href="assessment.html">Check-up gratuito</a>
-      <button class="burger" id="burger" aria-label="Apri il menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
     </div>
   </div>
   <div class="mobile-menu" id="mobile-menu">
