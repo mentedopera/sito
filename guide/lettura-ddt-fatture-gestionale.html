@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Come automatizzare l'inserimento di DDT e fatture fornitori nel gestionale — Mente d'Opera</title>
+<meta name="description" content="Basta ribattere DDT e fatture a mano: come l'AI legge i documenti dei fornitori e li carica nel gestionale, con controllo umano e zero errori di battitura.">
+<link rel="canonical" href="https://mentedopera.it/guide/lettura-ddt-fatture-gestionale.html">
+<link rel="icon" type="image/svg+xml" href="../logo/marchio-apostrofo.svg">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Come automatizzare l'inserimento di DDT e fatture fornitori nel gestionale">
+<meta property="og:description" content="Basta ribattere DDT e fatture a mano: come l'AI legge i documenti dei fornitori e li carica nel gestionale, con controllo umano e zero errori di battitura.">
+<meta property="og:url" content="https://mentedopera.it/guide/lettura-ddt-fatture-gestionale.html">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{background:#F5F0E8;color:#2B2D31;font-family:'Archivo',sans-serif;font-size:16.5px;line-height:1.75;}
+  .nav{position:sticky;top:0;background:rgba(245,240,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid rgba(43,45,49,.1);z-index:10;}
+  .nav-in{max-width:760px;margin:0 auto;padding:14px 6vw;display:flex;justify-content:space-between;align-items:center;}
+  .logo{text-decoration:none;font-family:'Fraunces',serif;font-size:19px;font-weight:500;color:#2B2D31;}
+  .logo i{font-style:normal;color:#C4572E;}
+  .nav-in a.cta{background:#C4572E;color:#fff;text-decoration:none;font-size:13px;font-weight:600;padding:8px 16px;border-radius:4px;}
+  .wrap{max-width:760px;margin:0 auto;padding:48px 6vw 70px;}
+  .crumb{font-size:12.5px;color:#6B5E52;margin-bottom:22px;}
+  .crumb a{color:#6B5E52;}
+  .tag{display:inline-block;font-size:10.5px;letter-spacing:2px;font-weight:600;color:#9A4423;background:#F3DDD2;padding:5px 12px;border-radius:999px;margin-bottom:16px;}
+  h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(30px,4.5vw,42px);line-height:1.15;margin-bottom:14px;}
+  .sotto{font-size:18px;color:#4A4D54;margin-bottom:34px;font-family:'Fraunces',serif;font-style:italic;}
+  h2{font-family:'Fraunces',serif;font-weight:500;font-size:24px;margin:36px 0 12px;}
+  p{color:#4A4D54;margin-bottom:14px;}
+  strong{color:#2B2D31;}
+  .banda{background:#C4572E;border-radius:14px;padding:30px 28px;margin-top:44px;text-align:center;}
+  .banda p{color:#fff;font-family:'Fraunces',serif;font-size:21px;margin-bottom:16px;}
+  .banda a{display:inline-block;background:#fff;color:#C4572E;text-decoration:none;font-weight:600;font-size:14px;padding:12px 24px;border-radius:6px;}
+  footer{background:#2B2D31;color:#9A958B;font-size:12.5px;text-align:center;padding:26px 6vw;}
+  footer a{color:#F5F0E8;text-decoration:none;}
+</style>
+</head>
+<body>
+<div class="nav"><div class="nav-in">
+  <a class="logo" href="../index.html">mente d<i>’</i>opera</a>
+  <a class="cta" href="../assessment.html">Check-up gratuito</a>
+</div></div>
+<div class="wrap">
+  <p class="crumb"><a href="../index.html">Home</a> › <a href="../guide.html">Guide</a> › DDT e fatture a gestionale</p>
+  <span class="tag">PER CHI PRODUCE</span>
+  <h1>DDT e fatture fornitori: dall'email al gestionale senza ribattere nulla</h1>
+  <p class="sotto">Il lavoro più odiato dell'amministrazione è anche il più facile da affidare all'intelligenza artificiale.</p>
+  <h2>Il problema</h2>
+<p>In quasi tutte le aziende che producono, ogni documento di trasporto e ogni fattura fornitore segue lo stesso percorso: arriva via email o su carta, qualcuno lo apre, lo legge e <strong>ribatte a mano</strong> codici, quantità e importi nel gestionale. Dieci minuti a documento, decine di documenti a settimana, e ogni battitura è un'occasione di errore: un codice sbagliato in carico magazzino si scopre settimane dopo, durante un inventario che non torna.</p>
+<p>Il paradosso è che l'informazione esiste già in forma scritta: viene solo ricopiata da un formato a un altro. È esattamente il tipo di lavoro che oggi una macchina fa meglio e più volentieri di una persona.</p>
+<h2>Come funziona con l'AI</h2>
+<p>Un sistema di lettura intelligente monitora la casella email dove arrivano i documenti (o riceve le scansioni della carta). L'AI <strong>legge il contenuto come farebbe un impiegato esperto</strong>: riconosce fornitore, numero documento, righe articolo, quantità, prezzi — anche quando ogni fornitore usa un layout diverso, cosa che i vecchi software a modelli fissi non gestivano.</p>
+<p>I dati estratti vengono confrontati con l'anagrafica e con l'ordine d'acquisto, poi proposti per il caricamento nel gestionale. Le righe sicure passano da sole; quelle dubbie (un codice mai visto, una differenza di prezzo) si fermano in una coda di verifica dove una persona decide in pochi secondi. <strong>L'ultima parola resta umana</strong>, ma sul 5% dei casi, non sul 100%.</p>
+<h2>Cosa serve per partire e cosa aspettarsi</h2>
+<p>Serve un gestionale che accetti dati dall'esterno (la gran parte di quelli diffusi in Italia lo permette, da TeamSystem a Zucchetti ai gestionali verticali) e l'accesso alla casella dove arrivano i documenti. L'implementazione tipica richiede dalle 4 alle 8 settimane, partendo dai fornitori più ricorrenti.</p>
+<p>I risultati che misuriamo di solito: <strong>oltre il 90% dei documenti caricati senza intervento umano</strong>, errori di battitura azzerati, e l'amministrazione che recupera ore ogni settimana da dedicare a ciò che una macchina non sa fare: trattare coi fornitori, controllare i margini, seguire gli insoluti.</p>
+
+  <div class="banda">
+    <p>Quanto tempo libererebbe nella tua azienda?</p>
+    <a href="../assessment.html">Fai il check-up AI gratuito — 5 minuti →</a>
+  </div>
+</div>
+<footer><a href="../index.html">mente d’opera</a> · Mente d’Opera è un marchio di Filinvest S.r.l. · P.IVA 08309790965 · Milano</footer>
+</body>
+</html>

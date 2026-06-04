@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:3.0
+N:;Filippo;;;
+FN:Filippo
+ORG:Mente d'Opera (Filinvest S.r.l.)
+TITLE:Founder
+EMAIL;TYPE=WORK:info@mentedopera.it
+URL:https://mentedopera.it
+ADR;TYPE=WORK:;;;Milano;;;Italia
+END:VCARD

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /assessment.html
+Disallow: /questionario-tecnico.html
+
+Sitemap: https://mentedopera.it/sitemap.xml
