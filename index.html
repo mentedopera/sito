@@ -127,7 +127,12 @@
   .ris-grid strong{font-family:var(--serif);font-size:clamp(46px,5vw,64px);font-weight:500;display:block;line-height:1;}
   .ris-grid strong i{font-style:italic;color:var(--terra);font-size:.6em;}
   .ris-grid span{display:block;margin-top:14px;font-size:14px;color:var(--sabbia);max-width:24ch;}
-  .ris-note{margin-top:66px;padding:34px 40px;border-left:3px solid var(--terra);background:var(--crema-deep);max-width:740px;}
+  .ris-slider{margin-top:66px;max-width:740px;display:grid;}
+  .ris-note{grid-area:1/1;padding:34px 40px;border-left:3px solid var(--terra);background:var(--crema-deep);opacity:0;visibility:hidden;transition:opacity .8s ease,visibility .8s;}
+  .ris-note.attiva{opacity:1;visibility:visible;}
+  .ris-dots{margin-top:18px;display:flex;gap:8px;}
+  .ris-dots button{width:9px;height:9px;border-radius:50%;border:none;background:rgba(43,45,49,.22);cursor:pointer;padding:0;transition:background .3s;}
+  .ris-dots button.attivo{background:var(--terra);}
   .ris-note p{font-family:var(--serif);font-size:21px;font-style:italic;line-height:1.5;}
   .ris-note span{display:block;margin-top:14px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--sabbia);font-weight:600;font-family:var(--sans);font-style:normal;}
   @media(max-width:860px){.ris-grid{grid-template-columns:1fr;gap:40px;}}
@@ -351,9 +356,32 @@
       <div class="reveal" style="transition-delay:.12s;"><strong>&lt; 6 <i>mesi</i></strong><span>tempo medio di rientro dell’investimento</span></div>
       <div class="reveal" style="transition-delay:.24s;"><strong>92<i>%</i></strong><span>delle richieste clienti gestite dall’AI, con escalation umana sui casi delicati</span></div>
     </div>
-    <div class="ris-note reveal">
-      <p>“Le stesse persone, il doppio del valore. Chi prima inseriva ordini tutto il giorno oggi segue i clienti importanti: l’AI fa il resto.”</p>
-      <span>Titolare · PMI manifatturiera, Lombardia</span>
+    <div class="ris-slider reveal" id="ris-slider">
+      <div class="ris-note attiva">
+        <p>“Le stesse persone, il doppio del valore. Chi prima inseriva ordini tutto il giorno oggi segue i clienti importanti: l’AI fa il resto.”</p>
+        <span>Titolare · PMI manifatturiera, Lombardia</span>
+      </div>
+      <div class="ris-note">
+        <p>“Il ‘dov’è il mio ordine?’ ci mangiava tre ore al giorno. Ora risponde l’AI in un minuto, e il servizio clienti si dedica ai casi davvero delicati.”</p>
+        <span>Titolare · E-commerce, Veneto</span>
+      </div>
+      <div class="ris-note">
+        <p>“I DDT li ribattevamo a mano da vent’anni. Oggi si caricano da soli, e in amministrazione sono finiti gli straordinari di fine mese.”</p>
+        <span>Responsabile amministrazione · Distribuzione, Emilia-Romagna</span>
+      </div>
+      <div class="ris-note">
+        <p>“Pensavo servisse un gestionale nuovo da centomila euro. È bastato mettere l’AI sopra i sistemi che avevamo già.”</p>
+        <span>Titolare · Impiantistica, Piemonte</span>
+      </div>
+      <div class="ris-note">
+        <p>“I preventivi uscivano in tre giorni, ora in mezza giornata. Ne prepariamo il doppio e ne chiudiamo di più.”</p>
+        <span>Socio · Studio di consulenza, Milano</span>
+      </div>
+      <div class="ris-note">
+        <p>“Il rapportino dei tecnici arrivava in fatturazione dopo settimane, con pezzi persi per strada. Adesso ogni intervento è fatturato il giorno stesso.”</p>
+        <span>Titolare · Assistenza macchinari, Brescia</span>
+      </div>
+      <div class="ris-dots" id="ris-dots"></div>
     </div>
   </div>
 </section>
@@ -385,6 +413,33 @@
 <script>
   const obs=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target);}})},{threshold:.15});
   document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+  // Carosello testimonianze
+  (function(){
+    const slider=document.getElementById('ris-slider');
+    if(!slider) return;
+    const note=[...slider.querySelectorAll('.ris-note')];
+    const dots=document.getElementById('ris-dots');
+    let i=0,timer;
+    note.forEach((_,n)=>{
+      const b=document.createElement('button');
+      b.setAttribute('aria-label','Testimonianza '+(n+1));
+      b.addEventListener('click',()=>{vai(n);riparti();});
+      dots.appendChild(b);
+    });
+    const dbtn=[...dots.children];
+    function vai(n){
+      note[i].classList.remove('attiva');dbtn[i].classList.remove('attivo');
+      i=n;
+      note[i].classList.add('attiva');dbtn[i].classList.add('attivo');
+    }
+    function avanti(){vai((i+1)%note.length);}
+    function riparti(){clearInterval(timer);timer=setInterval(avanti,6000);}
+    dbtn[0].classList.add('attivo');
+    slider.addEventListener('mouseenter',()=>clearInterval(timer));
+    slider.addEventListener('mouseleave',riparti);
+    riparti();
+  })();
 </script>
 </body>
 </html>
