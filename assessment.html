@@ -766,6 +766,7 @@ function scheda(){
   copia(true);
   document.getElementById('f2-done').style.display = 'block';
   document.getElementById('f2-done').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{ window.location.href = 'grazie.html'; }, 1800);
 }
 function val(id){ return (document.getElementById(id)||{}).value || ''; }
 function dump(){
